@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+PASSWORD = os.getenv('MONGO_PASSWORD')
+
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 MEDIA_URL = '/Photos/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Photos')
@@ -88,7 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'CLIENT': { 
-            'host': 'mongodb+srv://c8a:2Fa7%2AbS6Bx%23HuDv@cluster0.ow0ob.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+            'host': 'mongodb+srv://c8a:{PASSWORD}@cluster0.ow0ob.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
             'name': 'mytestdb',
             'authMechanism': 'SCRAM-SHA-1',
         },
