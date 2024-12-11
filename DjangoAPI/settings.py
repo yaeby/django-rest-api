@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 
 PASSWORD = os.getenv('MONGO_PASSWORD')
+assert PASSWORD, "MONGO_PASSWORD environment variable is not set!"
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 MEDIA_URL = '/Photos/'
@@ -90,7 +91,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'CLIENT': { 
-            'host': 'mongodb+srv://c8a:{PASSWORD}@cluster0.ow0ob.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+            'host': f'mongodb+srv://c8a:{PASSWORD}@cluster0.ow0ob.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
             'name': 'mytestdb',
             'authMechanism': 'SCRAM-SHA-1',
         },
